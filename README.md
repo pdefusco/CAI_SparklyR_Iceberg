@@ -91,25 +91,27 @@ people_tbl %>% head()
 
 ## Summary and Next Steps
 
-**Cloudera AI Runtimes** provide a structured way to package and manage reproducible environments for data science and machine learning workloads, enabling teams to define lightweight, customizable containers with specific editors, languages, and dependency stacks.
+In **Cloudera AI (CAI)** you can use **sparklyR** to connect R workloads to Spark 3 clusters, including custom runtimes, and then access data stored in **Apache Iceberg** tables. Cloudera’s platform integrates Iceberg as a first‑class table format for scalable analytics on cloud object stores and HDFS in its Data Lakehouse offering, with catalog integration and performance features. ([Cloudera Documentation][1])
 
-Runtimes are registered and managed in the Runtime Catalog, which lists all available standard and custom environments for interactive sessions or production workloads, and can be imported from AWS ECR and other image registries.
+### Useful links
 
-Administrators and data scientists can create and import new runtimes in the catalog by adding custom images and credentials, enabling secure access to registries like AWS ECR and on‑prem registries, and ensuring that the right tools and packages are available where and when teams need them. ([Cloudera Documentation][1])
+* 📄 **Using Apache Iceberg with Spark (Cloudera Docs)** — Overview and examples of querying Iceberg tables with Spark. ([Cloudera Documentation][1])
+  [https://www.cloudera.com/runtime/7.2.16/developing-spark-applications/topics/spark-iceberg.html](https://www.cloudera.com/runtime/7.2.16/developing-spark-applications/topics/spark-iceberg.html)
 
-### Cloudera AI Runtime Documentation & Blogs
+* 📘 **Apache Iceberg on Cloudera** — General information about Iceberg support in Cloudera’s Lakehouse platform. ([Cloudera][3])
+  [https://www.cloudera.com/open-source/apache-iceberg.html](https://www.cloudera.com/open-source/apache-iceberg.html)
 
-* **Runtime Catalog documentation** – Official guide to viewing and managing the Runtime Catalog in Cloudera AI. ([Cloudera Documentation][1])
-  *[https://docs.cloudera.com/machine-learning/1.5.5/runtimes/topics/ml-using-runtime-catalog.html](https://docs.cloudera.com/machine-learning/1.5.5/runtimes/topics/ml-using-runtime-catalog.html)*
+* 🧪 **Cloudera AI Iceberg data connection docs** — How to connect to Iceberg data lakes from CAI. ([Cloudera Documentation][4])
+  [https://docs.cloudera.com/machine-learning/cloud/import-data/topics/ml-iceberg-connection.html](https://docs.cloudera.com/machine-learning/cloud/import-data/topics/ml-iceberg-connection.html)
 
-* **Adding new ML Runtimes** – How to register custom ML Runtimes and add Docker registry credentials. ([Cloudera Documentation][2])
-  *[https://docs.cloudera.com/machine-learning/cloud/managing-runtimes/topics/ml-adding-new-ml-runtimes.html](https://docs.cloudera.com/machine-learning/cloud/managing-runtimes/topics/ml-adding-new-ml-runtimes.html)*
+* 📘 **Using Spark 3 from R with sparklyR (Cloudera Docs)** — Guidance and example code to connect R to Spark 3. ([Cloudera Documentation][2])
 
-* **Adding Docker registry credentials in CAI** – Instructions for adding Docker registry credentials (e.g., ECR) for pulling images. ([Cloudera Documentation][3])
-  *[https://docs.cloudera.com/machine-learning/1.5.5/managing-runtimes/topics/ml-add-docker-registry-credentials-runtimes.html](https://docs.cloudera.com/machine-learning/1.5.5/managing-runtimes/topics/ml-add-docker-registry-credentials-runtimes.html)*
+* 📖 **Introducing Apache Iceberg in Cloudera Data Platform (Blog)** — Background on Cloudera’s Iceberg integration in CDP. ([Cloudera][5])
 
-* **ML Runtimes overview and customization** – Full docs on ML Runtimes, editors, kernels, add‑ons, and custom images. ([Cloudera Documentation][4])
-  *[https://docs.cloudera.com/machine-learning/cloud/runtimes/index.html](https://docs.cloudera.com/machine-learning/cloud/runtimes/index.html)*
+If you want, I can provide direct runnable examples showing how to set up your CAI Spark session and R configs to work with Iceberg in a production‑ready way.
 
-* **Cloudera Blog: Building Custom Runtimes with Editors** – Example of customizing and using different editors in ML Runtimes. ([blog.cloudera.com][5])
-  *[https://blog.cloudera.com/building-custom-runtimes-with-editors-in-cloudera-machine-learning/](https://blog.cloudera.com/building-custom-runtimes-with-editors-in-cloudera-machine-learning/)*
+[1]: https://docs.cloudera.com/runtime/7.2.16/developing-spark-applications/topics/spark-iceberg.html?utm_source=chatgpt.com "Using Apache Iceberg with Spark"
+[2]: https://docs.cloudera.com/machine-learning/cloud/spark/topics/ml-installing-sparklyr.html?utm_source=chatgpt.com "Using Spark 3 from R"
+[3]: https://www.cloudera.com/open-source/apache-iceberg.html?utm_source=chatgpt.com "Apache Iceberg | Open source | Cloudera"
+[4]: https://docs.cloudera.com/machine-learning/cloud/import-data/topics/ml-iceberg-connection.html?utm_source=chatgpt.com "Create an Iceberg data connection"
+[5]: https://www.cloudera.com/blog/technical/introducing-apache-iceberg-in-cloudera-data-platform.html?utm_source=chatgpt.com "Introducing Apache Iceberg in Cloudera Data Platform | Blog | Cloudera"
