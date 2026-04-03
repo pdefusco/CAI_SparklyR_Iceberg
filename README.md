@@ -23,7 +23,20 @@ Create a CAI Project with the following runtime: https://github.com/pdefusco/cai
 
 ### 1. Create the Iceberg Table with PySpark
 
-Launch a PySpark session with Spark 3.5 Runtime Addon and run "writeTable.py":
+Launch a PySpark session with Spark 3.5 Runtime Addon and run "writeTable.py".
+
+```
+Name: PySpark Create Table Session
+Editor: PBJ Workbench
+Kernel: Python 3.10
+Edition: Standard
+Version: 2026.01
+Enable Spark: version 3.5
+Enable GPU: none
+Resource Profile: 2 vCPU / 4 GiB Memory
+```
+
+Code:
 
 ```
 import cml.data_v1 as cmldata
@@ -51,10 +64,27 @@ df.writeTo("spark_catalog.default.people").using("iceberg").tableProperty("write
 spark.sql("SELECT * FROM spark_catalog.default.people").show()
 ```
 
+Notice the PySpark Data Connection in CAI is preconfigured with Iceberg Jars and dependencies. CAI users are automatically authenticated in the Lakehouse when a SparkSession is created.
+
+For more Spark and Iceberg best practices with PySpark, please read this article: [Spark in CML, Recommendations for Using Spark in Cloudera Machine Learning](https://community.cloudera.com/t5/Community-Articles/Spark-in-CML-Recommendations-for-using-Spark-in-Cloudera/ta-p/372164)
+
 
 ### 2. Read the Iceberg Table with SparklyR
 
-Launch a SparklyR session with the SparklyR Community runtime provided above, and run "readTable.R":
+Launch a SparklyR session with the SparklyR Community runtime provided above, and run "readTable.R".
+
+```
+Name: Sparklyr Read Table Session
+Editor: Workbench
+Kernel: R 4.5
+Edition: Community
+Version: 2026.03
+Enable Spark: version 3.5
+Enable GPU: none
+Resource Profile: 2 vCPU / 4 GiB Memory
+```
+
+Code:
 
 ```
 #install.packages("sparklyr")
@@ -88,6 +118,10 @@ people_tbl <- spark_read_source(
 people_tbl %>% head()
 ```
 
+Notice that in this case the Iceberg Spark dependencies and the Spark Jars property is specified when the SparkSession is created.
+
+In particular, the "spark.jars" Spark option is set to the value of the Spark jar located in "/opt/spark/optional-lib" folder. This folder is automatically populated when the Spark Runtime Addon is configured in the session. Checking the exact jar file name is recommended when configuring the "spark.jars" option as the exact file name could vary depending on Spark and CAI versions.
+
 
 ## Summary and Next Steps
 
@@ -95,18 +129,18 @@ In **Cloudera AI (CAI)** you can use **sparklyR** to connect R workloads to Spar
 
 ### Useful links
 
-* 📄 **Using Apache Iceberg with Spark (Cloudera Docs)** — Overview and examples of querying Iceberg tables with Spark. ([Cloudera Documentation][1])
+* **Using Apache Iceberg with Spark (Cloudera Docs)** — Overview and examples of querying Iceberg tables with Spark. ([Cloudera Documentation][1])
   [https://www.cloudera.com/runtime/7.2.16/developing-spark-applications/topics/spark-iceberg.html](https://www.cloudera.com/runtime/7.2.16/developing-spark-applications/topics/spark-iceberg.html)
 
-* 📘 **Apache Iceberg on Cloudera** — General information about Iceberg support in Cloudera’s Lakehouse platform. ([Cloudera][3])
+* **Apache Iceberg on Cloudera** — General information about Iceberg support in Cloudera’s Lakehouse platform. ([Cloudera][3])
   [https://www.cloudera.com/open-source/apache-iceberg.html](https://www.cloudera.com/open-source/apache-iceberg.html)
 
-* 🧪 **Cloudera AI Iceberg data connection docs** — How to connect to Iceberg data lakes from CAI. ([Cloudera Documentation][4])
+* **Cloudera AI Iceberg data connection docs** — How to connect to Iceberg data lakes from CAI. ([Cloudera Documentation][4])
   [https://docs.cloudera.com/machine-learning/cloud/import-data/topics/ml-iceberg-connection.html](https://docs.cloudera.com/machine-learning/cloud/import-data/topics/ml-iceberg-connection.html)
 
-* 📘 **Using Spark 3 from R with sparklyR (Cloudera Docs)** — Guidance and example code to connect R to Spark 3. ([Cloudera Documentation][2])
+* **Using Spark 3 from R with sparklyR (Cloudera Docs)** — Guidance and example code to connect R to Spark 3. ([Cloudera Documentation][2])
 
-* 📖 **Introducing Apache Iceberg in Cloudera Data Platform (Blog)** — Background on Cloudera’s Iceberg integration in CDP. ([Cloudera][5])
+* **Introducing Apache Iceberg in Cloudera Data Platform (Blog)** — Background on Cloudera’s Iceberg integration in CDP. ([Cloudera][5])
 
 If you want, I can provide direct runnable examples showing how to set up your CAI Spark session and R configs to work with Iceberg in a production‑ready way.
 
